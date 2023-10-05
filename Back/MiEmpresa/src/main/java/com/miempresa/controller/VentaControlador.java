@@ -24,10 +24,11 @@ public class VentaControlador {
     PedidoServicio pedidoServicio;
 
     @PostMapping("/agregarProductos")
-    public void agregarProducto(@RequestBody Producto producto){
+    public Producto  agregarProducto(@RequestBody Producto producto){
         logger.info("Producto a agregar: " + producto);
         listaProductos = pedidoServicio.agregarProducto(producto , listaProductos);
         listaProductos = pedidoServicio.definirPrecio(listaProductos);
+        return producto;
     }
 
 
